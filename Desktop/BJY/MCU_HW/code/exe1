@@ -1,0 +1,56 @@
+// int main(){
+   // int count = 10;
+   // int sum = 0;
+   // for (int i =0; i<count; i++){
+   //  sum = sum + 1;
+   //  }
+   //  System.out.println(sum);
+//}
+// local로 함수를 호출해서 만드는 프로그램. 
+// int 에 있는 것들은 다 데이터임. 
+// 모든 것들이 데이터 세그먼트에 잡힘. 
+//int 변수를 잡아놓음. 데이터 세그먼
+//메모리의 주소를 기억하고 있음. 
+//count는 0번지 sum은 4번지임 i는 8번지임.
+//sto @count 10 0을 4번지에 집어 넣어라. sum equal 0
+//
+//count는 0번지 sum은 4번지임 i는 8번지임 
+//      count = 10;
+      move mar @count
+      move mbr 10
+      sto       
+//      sum = 0;
+      move mar @sum
+      move mbr 0
+      sto
+//      i=0
+      move mar @i
+      move mbr 0
+      sto
+      
+start: 
+// read i
+       move mar @i
+       lda  
+       move ac1 mbr
+// read count
+       move mar @count
+       lda
+       move ac2 mbr
+// i - count
+       sub ac1 ac2
+// i >= count then jump to end 
+       gtj end      
+// read sum        
+       move mar @sum
+       lda
+       move ac1 mbr
+// ac2 = 1
+       move ac2 1
+// add sum = sum + 1
+       add ac1 ac2
+       move mar @sum
+       move mbr ac1
+       sto
+       jump start
+end:   halt
