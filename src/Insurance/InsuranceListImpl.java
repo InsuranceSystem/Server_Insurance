@@ -144,6 +144,15 @@ public class InsuranceListImpl implements InsuranceList, Remote{
 		}
 		return insuranceNameType;
 	}
+	
+	public String getInsuranceIdbyName(String insuranceName) {
+		for (int i = 0; i < this.insuranceList.size(); i++) {
+			Insurance insurance = (Insurance) this.insuranceList.get(i);
+			if (insurance.getInsuranceName().equals(insuranceName))
+				return insurance.getInsuranceID();
+		}
+		return "[System] 잘못된 보헙 정보입니다.";
+	}
 
 	public Insurance getInsurancebyId(String insuranceID) {
 		for (int i = 0; i < this.insuranceList.size(); i++) {
@@ -166,5 +175,7 @@ public class InsuranceListImpl implements InsuranceList, Remote{
 		}
 		return false;
 	}
+
+
 
 }
