@@ -3,6 +3,7 @@
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import Insurance.GuaranteeListImpl;
 import Insurance.InsuranceApplicationListImpl;
@@ -32,7 +33,6 @@ public class InsuranceServer extends UnicastRemoteObject implements Insurance_Se
 		try {
 			InsuranceServer server = new InsuranceServer();
 			Naming.rebind("InsuranceServer", server);		
-
 			InsuranceList = new InsuranceListImpl();
 			GuaranteeList = new GuaranteeListImpl();
 			InsuranceApplicationList = new InsuranceApplicationListImpl();
@@ -47,21 +47,21 @@ public class InsuranceServer extends UnicastRemoteObject implements Insurance_Se
 		}
 	}
 	@Override
-	public InsuranceList getInsuranceList() {
+	public InsuranceList getInsuranceList() throws RemoteException {
 		return InsuranceList;
 	}
 
 	@Override
-	public GuaranteeList getGuaranteeList() {
+	public GuaranteeList getGuaranteeList() throws RemoteException{
 		return GuaranteeList;
 	}
 	@Override
-	public InsuranceApplicationList getInsuranceApplicationList() {
+	public InsuranceApplicationList getInsuranceApplicationList() throws RemoteException{
 		return InsuranceApplicationList;
 	}
 
 	@Override
-	public TermsList getTermsList() {
+	public TermsList getTermsList() throws RemoteException{
 		return TermsList;
 	}
 	
