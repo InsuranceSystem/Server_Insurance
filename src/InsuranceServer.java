@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import Insurance.GuaranteeListImpl;
 import Insurance.InsuranceApplicationListImpl;
@@ -31,8 +32,10 @@ public class InsuranceServer extends UnicastRemoteObject implements Insurance_Se
 	
 	public static void main(String[] args) throws Exception {
 		try {
+			
+			Registry registry = LocateRegistry.createRegistry(1400);
 			InsuranceServer server = new InsuranceServer();
-			Naming.rebind("InsuranceServer", server);		
+	         registry.rebind("InsuranceServer", server);	
 			InsuranceList = new InsuranceListImpl();
 			GuaranteeList = new GuaranteeListImpl();
 			InsuranceApplicationList = new InsuranceApplicationListImpl();
