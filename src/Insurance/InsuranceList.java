@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import Interface.Contract;
-import Interface.Insurance;
-import Interface.InsuranceList;
-
 public interface InsuranceList{
 
 	boolean createInsurance(Insurance insurance) throws FileNotFoundException, IOException, Exception;
@@ -40,6 +36,5 @@ public interface InsuranceList{
 
 	Collection<? extends String> getInsuranceNameById(String insurance);
 
-	List<Insurance> getInsuranceFromId(List<Contract> contracts, InsuranceList insuranceList);
 
 }

@@ -1,4 +1,4 @@
-package server;
+
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -8,6 +8,7 @@ import Insurance.GuaranteeListImpl;
 import Insurance.InsuranceApplicationListImpl;
 import Insurance.InsuranceListImpl;
 import Insurance.TermsListImpl;
+import Interface.Insurance_ServerIF;
 import Insurance.GuaranteeList;
 import Insurance.InsuranceApplicationList;
 import Insurance.InsuranceList;

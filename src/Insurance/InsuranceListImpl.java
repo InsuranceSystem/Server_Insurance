@@ -167,10 +167,4 @@ public class InsuranceListImpl implements InsuranceList, Remote{
 		return false;
 	}
 
-	@Override
-	public List<Insurance> getInsuranceFromId(List<Contract> contracts, InsuranceList insuranceList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
