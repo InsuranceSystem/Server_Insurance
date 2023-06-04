@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.List;
 import Dao.InsuranceDao;
+import Interface.InsuranceList;
 
 public class InsuranceListImpl implements InsuranceList, Remote{
 

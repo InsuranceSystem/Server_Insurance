@@ -3,6 +3,7 @@ package Insurance;
 import java.rmi.Remote;
 import java.util.ArrayList;
 import Dao.TermsDao;
+import Interface.TermsList;
 
 public class TermsListImpl implements TermsList, Remote{
 

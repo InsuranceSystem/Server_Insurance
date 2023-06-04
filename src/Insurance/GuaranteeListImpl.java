@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import Dao.GuaranteeDao;
+import Interface.GuaranteeList;
 
 public class GuaranteeListImpl implements GuaranteeList, Remote{
 

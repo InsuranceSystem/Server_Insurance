@@ -1,6 +1,7 @@
 package Insurance;
 
 import Dao.InsuranceApplicationDao;
+import Interface.InsuranceApplicationList;
 
 import java.io.*;
 import java.rmi.Remote;
