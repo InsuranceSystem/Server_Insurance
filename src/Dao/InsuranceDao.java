@@ -2,7 +2,8 @@ package Dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import Insurance.Insurance;
+
+import Interface.Insurance;
 
 public class InsuranceDao extends Dao{
 	public InsuranceDao() {

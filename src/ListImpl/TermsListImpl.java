@@ -1,11 +1,14 @@
-package Insurance;
+package ListImpl;
 
+import java.io.Serializable;
 import java.rmi.Remote;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import Dao.TermsDao;
+import Interface.Terms;
 import Interface.TermsList;
 
-public class TermsListImpl implements TermsList, Remote{
+public class TermsListImpl implements TermsList, Remote, Serializable {
 
 	private ArrayList<Terms> termsList;
 	private TermsDao termsDao;

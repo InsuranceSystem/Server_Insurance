@@ -3,7 +3,7 @@ package Dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import Insurance.Terms;
+import Interface.Terms;
 
 public class TermsDao extends Dao{
 	public TermsDao() {

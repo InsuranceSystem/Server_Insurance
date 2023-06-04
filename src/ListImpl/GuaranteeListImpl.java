@@ -1,4 +1,4 @@
-package Insurance;
+package ListImpl;
 
 
 import java.io.BufferedReader;
@@ -8,15 +8,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.rmi.Remote;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import Dao.GuaranteeDao;
+import Interface.Guarantee;
 import Interface.GuaranteeList;
 
-public class GuaranteeListImpl implements GuaranteeList, Remote{
+public class GuaranteeListImpl implements GuaranteeList, Remote, Serializable {
 
 	private ArrayList<Guarantee> guaranteeList;
 	private GuaranteeDao guaranteeDao;

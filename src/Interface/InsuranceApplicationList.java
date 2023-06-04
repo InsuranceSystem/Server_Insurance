@@ -4,8 +4,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import Insurance.InsuranceApplication;
-
 public interface InsuranceApplicationList extends Remote{
 
 	boolean createInsuranceApplication(InsuranceApplication insuranceApplication) throws Exception, RemoteException;

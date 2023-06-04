@@ -7,14 +7,15 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import Insurance.GuaranteeListImpl;
-import Insurance.InsuranceApplicationListImpl;
-import Insurance.InsuranceListImpl;
-import Insurance.TermsListImpl;
+
 import Interface.GuaranteeList;
 import Interface.InsuranceApplicationList;
 import Interface.InsuranceList;
 import Interface.TermsList;
+import ListImpl.GuaranteeListImpl;
+import ListImpl.InsuranceApplicationListImpl;
+import ListImpl.InsuranceListImpl;
+import ListImpl.TermsListImpl;
 
 
 
@@ -29,13 +30,10 @@ public class InsuranceServer extends UnicastRemoteObject{
 	
 	public static void main(String[] args) throws Exception {
 		try {
-			
+			System.setProperty("java.security.policy", "policy.txt");
+			System.setSecurityManager(null);	
 			InsuranceServer server = new InsuranceServer();
-	
-	        
-	         
-	        
-	        
+       
 			TermsList TermsList = new TermsListImpl();
 			TermsList stub1 = (TermsList) UnicastRemoteObject.exportObject(TermsList, 0);
 	        Registry registry1 = LocateRegistry.createRegistry(1309);

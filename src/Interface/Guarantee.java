@@ -1,10 +1,12 @@
-package Insurance;
+package Interface;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Guarantee {
+public class Guarantee implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 	private String insuranceID;
 	private String termsID;

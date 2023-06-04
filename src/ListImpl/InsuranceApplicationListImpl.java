@@ -1,14 +1,16 @@
-package Insurance;
+package ListImpl;
 
 import Dao.InsuranceApplicationDao;
+import Interface.InsuranceApplication;
 import Interface.InsuranceApplicationList;
 
 import java.io.*;
 import java.rmi.Remote;
+import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class InsuranceApplicationListImpl implements InsuranceApplicationList, Remote{
+public class InsuranceApplicationListImpl implements InsuranceApplicationList, Remote, Serializable {
 
 	private ArrayList<InsuranceApplication> insuranceApplicationList;
 	private InsuranceApplicationDao insuranceApplicationDao;

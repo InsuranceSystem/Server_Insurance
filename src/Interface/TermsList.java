@@ -4,8 +4,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import Insurance.Terms;
-
 
 public interface TermsList extends Remote{
 	boolean createTerms(Terms terms) throws Exception, RemoteException;

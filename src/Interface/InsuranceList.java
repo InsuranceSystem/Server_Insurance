@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import Insurance.Insurance;
-
 public interface InsuranceList extends Remote{
 
 	boolean createInsurance(Insurance insurance) throws FileNotFoundException, IOException, Exception, RemoteException;
