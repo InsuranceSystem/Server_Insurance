@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Exception.DaoException;
-import Insurance.Guarantee;
+
+import Interface.Guarantee;
 
 public class GuaranteeDao extends Dao {
 	public GuaranteeDao() {

@@ -1,17 +1,24 @@
-package Insurance;
+package ListImpl;
 
+import java.io.Serializable;
 import java.rmi.Remote;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import Dao.InsuranceDao;
+import Interface.Guarantee;
+import Interface.Insurance;
+import Interface.InsuranceList;
 
-public class InsuranceListImpl implements InsuranceList, Remote{
+public class InsuranceListImpl implements InsuranceList, Remote, Serializable {
+    private static final long serialVersionUID = 1L;
 
 	private ArrayList<Insurance> insuranceList;
 	private InsuranceDao insuranceDao;
 	public GuaranteeListImpl guaranteeList;
 
 	public InsuranceListImpl() throws Exception {
+		
 		this.insuranceDao = new InsuranceDao();
 		this.insuranceList = insuranceDao.retrieveAll();
 		guaranteeList = new GuaranteeListImpl();

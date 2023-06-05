@@ -1,6 +1,7 @@
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -9,22 +10,17 @@ import java.rmi.server.UnicastRemoteObject;
 import Exception.CustomClassNotFoundException;
 import Exception.CustomConnectException;
 import Exception.CustomNotBoundException;
-import Insurance.GuaranteeListImpl;
-import Insurance.InsuranceApplicationListImpl;
-import Insurance.InsuranceListImpl;
-import Insurance.TermsListImpl;
-import Interface.Insurance_ServerIF;
-import Insurance.GuaranteeList;
-import Insurance.InsuranceApplicationList;
-import Insurance.InsuranceList;
-import Insurance.TermsList;
+import Interface.GuaranteeList;
+import Interface.InsuranceApplicationList;
+import Interface.InsuranceList;
+import Interface.TermsList;
+import ListImpl.GuaranteeListImpl;
+import ListImpl.InsuranceApplicationListImpl;
+import ListImpl.InsuranceListImpl;
+import ListImpl.TermsListImpl;
 
-public class InsuranceServer extends UnicastRemoteObject implements Insurance_ServerIF {
+public class InsuranceServer extends UnicastRemoteObject {
 	private static final long serialVersionUID = 1L;
-	private static InsuranceList InsuranceList;
-	private static GuaranteeList GuaranteeList;
-	private static InsuranceApplicationList InsuranceApplicationList;
-	private static TermsList TermsList;
 
 	protected InsuranceServer() throws RemoteException {
 		super();
@@ -32,14 +28,32 @@ public class InsuranceServer extends UnicastRemoteObject implements Insurance_Se
 
 	public static void main(String[] args) throws Exception {
 		try {
-
-			Registry registry = LocateRegistry.createRegistry(1400);
+			System.setProperty("java.security.policy", "policy.txt");
+			System.setSecurityManager(null);
 			InsuranceServer server = new InsuranceServer();
-			registry.rebind("InsuranceServer", server);
-			InsuranceList = new InsuranceListImpl();
-			GuaranteeList = new GuaranteeListImpl();
-			InsuranceApplicationList = new InsuranceApplicationListImpl();
-			TermsList = new TermsListImpl();
+
+			TermsList TermsList = new TermsListImpl();
+			TermsList stub1 = (TermsList) UnicastRemoteObject.exportObject(TermsList, 0);
+			Registry registry1 = LocateRegistry.createRegistry(1309);
+			registry1.rebind("TermsList", stub1);
+
+			// SurveyList 객체 등록
+			GuaranteeList GuaranteeList = new GuaranteeListImpl();
+			GuaranteeList stub2 = (GuaranteeList) UnicastRemoteObject.exportObject(GuaranteeList, 0);
+			Registry registry2 = LocateRegistry.createRegistry(1310);
+			registry2.rebind("GuaranteeList", stub2);
+
+			InsuranceList InsuranceList = new InsuranceListImpl();
+			InsuranceList stub3 = (InsuranceList) UnicastRemoteObject.exportObject(InsuranceList, 0);
+			Registry registry3 = LocateRegistry.createRegistry(1311);
+			registry3.rebind("InsuranceList", stub3);
+
+			// SurveyList 객체 등록
+			InsuranceApplicationList InsuranceApplicationList = new InsuranceApplicationListImpl();
+			InsuranceApplicationList stub4 = (InsuranceApplicationList) UnicastRemoteObject
+					.exportObject(InsuranceApplicationList, 0);
+			Registry registry4 = LocateRegistry.createRegistry(1312);
+			registry4.rebind("InsuranceApplicationList", stub4);
 
 			System.out.println("Insurance Server is ready !!!");
 
@@ -55,25 +69,4 @@ public class InsuranceServer extends UnicastRemoteObject implements Insurance_Se
 			System.out.println("Class Found Error: " + e.getMessage());
 		}
 	}
-
-	@Override
-	public InsuranceList getInsuranceList() throws RemoteException {
-		return InsuranceList;
-	}
-
-	@Override
-	public GuaranteeList getGuaranteeList() throws RemoteException {
-		return GuaranteeList;
-	}
-
-	@Override
-	public InsuranceApplicationList getInsuranceApplicationList() throws RemoteException {
-		return InsuranceApplicationList;
-	}
-
-	@Override
-	public TermsList getTermsList() throws RemoteException {
-		return TermsList;
-	}
-
 }

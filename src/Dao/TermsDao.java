@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Exception.DaoException;
-import Insurance.Terms;
+import Interface.Terms;
 
 public class TermsDao extends Dao {
 	public TermsDao() {

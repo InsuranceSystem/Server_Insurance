@@ -1,16 +1,16 @@
 package Dao;
 
-import Insurance.Insurance;
-import Insurance.InsuranceApplication;
-
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Exception.DaoException;
+import Interface.InsuranceApplication;
 
 public class InsuranceApplicationDao extends Dao {
+
 	public InsuranceApplicationDao() {
 		try {
 			super.connect();
