@@ -9,6 +9,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 import Exception.CustomClassNotFoundException;
 import Exception.CustomConnectException;
+import Exception.CustomIllegalAccessException;
 import Exception.CustomNotBoundException;
 import Interface.GuaranteeList;
 import Interface.InsuranceApplicationList;
@@ -26,7 +27,8 @@ public class InsuranceServer extends UnicastRemoteObject {
 		super();
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception, CustomNotBoundException, CustomConnectException,
+			CustomIllegalAccessException, CustomClassNotFoundException, NoClassDefFoundError {
 		try {
 			System.setProperty("java.security.policy", "policy.txt");
 			System.setSecurityManager(null);
