@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import Dao.GuaranteeDao;
+import Exception.DaoException;
 import Interface.Guarantee;
 import Interface.GuaranteeList;
 
@@ -47,8 +48,9 @@ public class GuaranteeListImpl implements GuaranteeList, Remote, Serializable {
 		return false;
 	}
 		
-	public ArrayList<Guarantee> getAllGuranteeByID(String insuranceID) {
+	public ArrayList<Guarantee> getAllGuranteeByID(String insuranceID) throws Exception {
 		ArrayList<Guarantee> guarantees = new ArrayList<Guarantee>();
+		this.guaranteeList = guaranteeDao.retrieveAll();
 		for(int i=0;i<this.guaranteeList.size();i++) {
 			if(this.guaranteeList.get(i).matchID(insuranceID))
 				guarantees.add(this.guaranteeList.get(i));
