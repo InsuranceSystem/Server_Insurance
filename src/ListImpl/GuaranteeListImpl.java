@@ -22,6 +22,7 @@ import Interface.GuaranteeList;
 
 public class GuaranteeListImpl implements GuaranteeList, Remote, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Guarantee> guaranteeList;
 	private GuaranteeDao guaranteeDao;
 
