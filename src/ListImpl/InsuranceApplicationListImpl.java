@@ -6,6 +6,7 @@ import Interface.InsuranceApplicationList;
 
 import java.io.*;
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -51,12 +52,13 @@ public class InsuranceApplicationListImpl implements InsuranceApplicationList, R
 		}
 		return false;
 	}
-	public boolean createInsuranceApplication(InsuranceApplication insuranceApplication) throws Exception {
-		if (this.insuranceApplicationList.add(insuranceApplication)) {
-			insuranceApplicationDao.create(insuranceApplication);
-			return true;
-		}
-		else return false;
+	public boolean createInsuranceApplication(InsuranceApplication insuranceApplication) throws Exception, RemoteException {
+
+			if (this.insuranceApplicationList.add(insuranceApplication)) {
+				insuranceApplicationDao.create(insuranceApplication);
+				return true;
+			}
+			else return false;
 	}
 	public InsuranceApplication getApplicationbyId(String applicationID) {
 		for(int i=0;i<this.insuranceApplicationList.size();i++) {
